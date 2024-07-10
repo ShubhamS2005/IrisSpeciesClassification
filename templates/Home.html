@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>This is Home Page</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <title>Iris Species Predictor</title>
+  </head>
+
+  <body>
+    <section class="main">
+        <h1>Iris Species Predictor</h1>
+        <p style="color: blue; text-align: center; margin-top: 10px;">Enter the details to predict the Iris Species</p>
+        <div class="container">
+      <form action="{{url_for('predict')}}" method="POST">
+        <label for="sepal_length">Sepal Length</label>
+        <input type="text" name="sepal_length" id="sepal_length" />
+
+        <label for="sepal_width">Sepal Width</label>
+        <input type="text" name="sepal_width" id="sepal_width" />
+
+        <label for="petal_length">Petal Length</label>
+        <input type="text" name="petal_length" id="petal_length" />
+        <label for="petal_width">Petal Width</label>
+        <input type="text" name="petal_width" id="petal_width" />
+
+        <button type="submit">Predict Species</button>
+      </form>
+    </div>
+    <div class="r-box">
+        <h3 >Result </h3>
+        <div class="border">
+            <img src=static/photos/{{img}} >
+        </div>
+      <div>
+          <h3>{{predict_text}}</h3>
+        </div>
+    </div>
+    </section>
+    </body>
 </html>
